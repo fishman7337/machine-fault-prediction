@@ -2,6 +2,7 @@
 
 ## 0.1.0
 
+- Added formal Singapore Polytechnic academic project context.
 - Renamed the project presentation to Predictive Maintenance Fault Classifier.
 - Reorganized raw data, notebooks, reports, models, source code, tests, and docs.
 - Added the `fault_prediction` Python package.

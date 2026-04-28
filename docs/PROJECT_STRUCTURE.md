@@ -3,6 +3,12 @@
 This repository separates exploratory assets from the production workflow.
 
 ```text
+docs/ACADEMIC_CONTEXT.md
+```
+
+Academic provenance for the assessment, including institution, diploma, module, student, academic period, and lecturer.
+
+```text
 data/raw/
 ```
 

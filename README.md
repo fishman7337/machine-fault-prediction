@@ -2,6 +2,14 @@
 
 A reproducible machine learning project for predicting factory machine fault status from sensor readings. The original notebook analysis has been preserved, and the production workflow has been extracted into a tested Python package with CLI commands, CI, statistical tests, and MLOps documentation.
 
+## Academic Context
+
+This project was completed for Singapore Polytechnic, School of Computing, Diploma in Applied AI & Analytics, under the AI & Machine Learning module (`ST1511`), CA1 Part A.
+
+- Student: Goh Kun Ming, DAAA student
+- Academic year: AY24/25, Year 1 Semester 2
+- Lecturer: Adjunct Lecturer Tai Hock Lin (Andy)
+
 ## What changed
 
 - Corrected the raw dataset extension from `factory_data.xls` to `data/raw/factory_data.csv` because the file is CSV content.
@@ -15,27 +23,28 @@ A reproducible machine learning project for predicting factory machine fault sta
 
 ```text
 .
-├── data/
-│   ├── raw/factory_data.csv
-│   └── processed/
-├── docs/
-│   ├── DATA_CARD.md
-│   ├── FEATURE_ENGINEERING.md
-│   ├── MLOPS.md
-│   ├── MODEL_CARD.md
-│   ├── PROJECT_STRUCTURE.md
-│   └── STATISTICAL_TESTS.md
-├── models/
-├── notebooks/
-│   └── factory_machine_status_classification.ipynb
-├── reports/
-│   ├── figures/
-│   ├── metrics/
-│   └── presentations/
-├── src/fault_prediction/
-├── tests/
-├── .github/workflows/ci.yml
-└── pyproject.toml
+|-- data/
+|   |-- raw/factory_data.csv
+|   `-- processed/
+|-- docs/
+|   |-- ACADEMIC_CONTEXT.md
+|   |-- DATA_CARD.md
+|   |-- FEATURE_ENGINEERING.md
+|   |-- MLOPS.md
+|   |-- MODEL_CARD.md
+|   |-- PROJECT_STRUCTURE.md
+|   `-- STATISTICAL_TESTS.md
+|-- models/
+|-- notebooks/
+|   `-- factory_machine_status_classification.ipynb
+|-- reports/
+|   |-- figures/
+|   |-- metrics/
+|   `-- presentations/
+|-- src/fault_prediction/
+|-- tests/
+|-- .github/workflows/ci.yml
+`-- pyproject.toml
 ```
 
 ## Quickstart
@@ -113,6 +122,7 @@ CI runs the same checks on Python 3.10, 3.11, and 3.12.
 
 ## Documentation
 
+- [Academic context](docs/ACADEMIC_CONTEXT.md)
 - [Project structure](docs/PROJECT_STRUCTURE.md)
 - [Data card](docs/DATA_CARD.md)
 - [Feature engineering](docs/FEATURE_ENGINEERING.md)
