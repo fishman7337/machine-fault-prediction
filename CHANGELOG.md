@@ -2,6 +2,8 @@
 
 ## 0.1.0
 
+- Added explicit runtime, development, notebook, security, and all-in dependency requirement files.
+- Added CI security checks with Bandit static analysis and `pip-audit` dependency auditing.
 - Expanded the split notebooks with original-style academic markdown, explanations, and interpretation sections.
 - Promoted the original CA1 notebook to a maintained first-class notebook artifact.
 - Added report-style assessment documentation and documentation integrity checks.

@@ -8,6 +8,7 @@ __pycache__/
 htmlcov/
 
 .venv/
+.audit-venv/
 venv/
 env/
 .env

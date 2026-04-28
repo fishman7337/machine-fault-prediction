@@ -16,7 +16,13 @@ REQUIRED_DOCS = [
     Path("docs/MODEL_CARD.md"),
     Path("docs/NOTEBOOKS.md"),
     Path("docs/PROJECT_STRUCTURE.md"),
+    Path("docs/SECURITY_CHECKS.md"),
     Path("docs/STATISTICAL_TESTS.md"),
+    Path("requirements.txt"),
+    Path("requirements-dev.txt"),
+    Path("requirements-notebook.txt"),
+    Path("requirements-security.txt"),
+    Path("requirements-all.txt"),
 ]
 
 
@@ -51,3 +57,14 @@ def test_assessment_report_preserves_academic_context():
     ]
     for phrase in required_phrases:
         assert phrase in report
+
+
+def test_ci_workflow_includes_security_checks():
+    workflow = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
+    required_phrases = [
+        "Security checks",
+        "bandit -c pyproject.toml -r src",
+        "pip-audit --skip-editable",
+    ]
+    for phrase in required_phrases:
+        assert phrase in workflow

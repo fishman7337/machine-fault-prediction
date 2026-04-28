@@ -28,11 +28,14 @@ This project was completed for Singapore Polytechnic, School of Computing, Diplo
 |   `-- processed/
 |-- docs/
 |   |-- ACADEMIC_CONTEXT.md
+|   |-- ASSESSMENT_REPORT.md
 |   |-- DATA_CARD.md
+|   |-- DOCUMENTATION_INDEX.md
 |   |-- FEATURE_ENGINEERING.md
 |   |-- MLOPS.md
 |   |-- MODEL_CARD.md
 |   |-- PROJECT_STRUCTURE.md
+|   |-- SECURITY_CHECKS.md
 |   `-- STATISTICAL_TESTS.md
 |-- models/
 |-- notebooks/
@@ -48,6 +51,11 @@ This project was completed for Singapore Polytechnic, School of Computing, Diplo
 |-- src/fault_prediction/
 |-- tests/
 |-- .github/workflows/ci.yml
+|-- requirements.txt
+|-- requirements-all.txt
+|-- requirements-dev.txt
+|-- requirements-notebook.txt
+|-- requirements-security.txt
 `-- pyproject.toml
 ```
 
@@ -56,7 +64,7 @@ This project was completed for Singapore Polytechnic, School of Computing, Diplo
 ```bash
 python -m venv .venv
 python -m pip install --upgrade pip
-python -m pip install -e ".[dev,notebook]"
+python -m pip install -r requirements-all.txt
 pytest
 ```
 
@@ -118,11 +126,20 @@ The production model is an end-to-end scikit-learn pipeline:
 Local checks:
 
 ```bash
+python -m pip install -r requirements-dev.txt
 ruff check .
 pytest
 ```
 
-CI runs the same checks on Python 3.10, 3.11, and 3.12.
+Security checks:
+
+```bash
+python -m pip install -r requirements-security.txt
+bandit -c pyproject.toml -r src
+pip-audit --skip-editable
+```
+
+CI runs linting and tests on Python 3.10, 3.11, and 3.12, plus a dedicated security job.
 
 ## Documentation
 
@@ -136,6 +153,7 @@ CI runs the same checks on Python 3.10, 3.11, and 3.12.
 - [Statistical tests](docs/STATISTICAL_TESTS.md)
 - [Model card](docs/MODEL_CARD.md)
 - [MLOps workflow](docs/MLOPS.md)
+- [Security checks](docs/SECURITY_CHECKS.md)
 
 ## License
 

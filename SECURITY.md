@@ -16,3 +16,7 @@ Please report suspected vulnerabilities privately to the project maintainer. Inc
 ## Data Handling
 
 Do not commit secrets, production credentials, private customer data, or sensitive operational data. The included dataset is treated as project sample data. Generated model files and predictions are ignored by default.
+
+## Automated Checks
+
+Security automation is documented in [docs/SECURITY_CHECKS.md](docs/SECURITY_CHECKS.md). CI runs Bandit static analysis and `pip-audit` dependency vulnerability auditing.

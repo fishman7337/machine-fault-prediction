@@ -10,11 +10,20 @@
 ## Local Quality Gates
 
 ```bash
+python -m pip install -r requirements-dev.txt
 ruff check .
 pytest
 ```
 
 The test suite also checks that the split notebooks are valid, ordered, and output-free. The maintained original CA1 notebook is kept for traceability and is not held to the same output-free rule.
+
+Security checks can be run locally with:
+
+```bash
+python -m pip install -r requirements-security.txt
+bandit -c pyproject.toml -r src
+pip-audit --skip-editable
+```
 
 ## CI
 
@@ -26,7 +35,10 @@ The CI matrix tests:
 - Python 3.11
 - Python 3.12
 
-Each job installs the project, runs Ruff, and runs pytest.
+The CI workflow includes:
+
+- A test matrix that installs development dependencies, runs Ruff, and runs pytest.
+- A security job that runs Bandit static analysis and `pip-audit` dependency vulnerability auditing.
 
 ## Training
 

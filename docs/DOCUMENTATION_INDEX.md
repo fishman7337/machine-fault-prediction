@@ -12,6 +12,7 @@ This index maps each document to the role it plays in the project.
 | [MLOps workflow](MLOPS.md) | Reproducibility, CI, training, prediction, monitoring, and retraining guidance. |
 | [Notebook guide](NOTEBOOKS.md) | Maintained original notebook plus the split modular workflow. |
 | [Project structure](PROJECT_STRUCTURE.md) | Folder-by-folder explanation of the repository. |
+| [Security checks](SECURITY_CHECKS.md) | Static security scan, dependency audit, and local security commands. |
 | [Statistical tests](STATISTICAL_TESTS.md) | P-value tests used for numeric and categorical feature review. |
 
 ## Recommended Review Order
@@ -23,3 +24,4 @@ This index maps each document to the role it plays in the project.
 5. [Feature engineering](FEATURE_ENGINEERING.md)
 6. [Model card](MODEL_CARD.md)
 7. [MLOps workflow](MLOPS.md)
+8. [Security checks](SECURITY_CHECKS.md)
