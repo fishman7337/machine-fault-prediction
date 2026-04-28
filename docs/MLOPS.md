@@ -14,6 +14,8 @@ ruff check .
 pytest
 ```
 
+The test suite also checks that the split notebooks are valid, ordered, and output-free. The archived original notebook is kept for traceability and is not held to the same output-free rule.
+
 ## CI
 
 GitHub Actions runs on pushes and pull requests to `main`.

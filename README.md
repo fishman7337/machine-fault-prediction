@@ -36,7 +36,11 @@ This project was completed for Singapore Polytechnic, School of Computing, Diplo
 |   `-- STATISTICAL_TESTS.md
 |-- models/
 |-- notebooks/
-|   `-- factory_machine_status_classification.ipynb
+|   |-- 01_data_understanding.ipynb
+|   |-- 02_feature_engineering_and_statistics.ipynb
+|   |-- 03_training_and_thresholding.ipynb
+|   |-- 04_evaluation_and_prediction.ipynb
+|   `-- archive/
 |-- reports/
 |   |-- figures/
 |   |-- metrics/
@@ -124,6 +128,7 @@ CI runs the same checks on Python 3.10, 3.11, and 3.12.
 
 - [Academic context](docs/ACADEMIC_CONTEXT.md)
 - [Project structure](docs/PROJECT_STRUCTURE.md)
+- [Notebook guide](docs/NOTEBOOKS.md)
 - [Data card](docs/DATA_CARD.md)
 - [Feature engineering](docs/FEATURE_ENGINEERING.md)
 - [Statistical tests](docs/STATISTICAL_TESTS.md)
