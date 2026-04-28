@@ -14,7 +14,7 @@ ruff check .
 pytest
 ```
 
-The test suite also checks that the split notebooks are valid, ordered, and output-free. The archived original notebook is kept for traceability and is not held to the same output-free rule.
+The test suite also checks that the split notebooks are valid, ordered, and output-free. The maintained original CA1 notebook is kept for traceability and is not held to the same output-free rule.
 
 ## CI
 

@@ -7,6 +7,7 @@ EXPECTED_NOTEBOOKS = [
     "03_training_and_thresholding.ipynb",
     "04_evaluation_and_prediction.ipynb",
 ]
+ORIGINAL_NOTEBOOK = "00_original_ca1_submission.ipynb"
 
 
 def _load_notebook(path: Path) -> dict:
@@ -42,6 +43,9 @@ def test_split_notebooks_are_valid_and_output_free():
                 assert cell["outputs"] == []
 
 
-def test_original_notebook_is_archived():
-    archive_path = Path("notebooks/archive/original_factory_machine_status_classification.ipynb")
-    assert archive_path.exists()
+def test_original_notebook_is_maintained():
+    original_path = Path("notebooks") / ORIGINAL_NOTEBOOK
+    assert original_path.exists()
+    original = _load_notebook(original_path)
+    assert original["nbformat"] == 4
+    assert len(original["cells"]) > 100

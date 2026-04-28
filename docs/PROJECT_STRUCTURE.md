@@ -24,7 +24,7 @@ Generated datasets. This folder is intentionally ignored except for `.gitkeep`.
 notebooks/
 ```
 
-Split exploratory workflow notebooks. The original assessment notebook is preserved under `notebooks/archive/` for auditability, but reusable logic should live in `src/fault_prediction/`.
+Maintained original CA1 notebook plus split exploratory workflow notebooks. The original notebook is preserved as `00_original_ca1_submission.ipynb`, but reusable logic should live in `src/fault_prediction/`.
 
 ```text
 src/fault_prediction/

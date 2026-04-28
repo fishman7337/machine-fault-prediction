@@ -36,11 +36,11 @@ This project was completed for Singapore Polytechnic, School of Computing, Diplo
 |   `-- STATISTICAL_TESTS.md
 |-- models/
 |-- notebooks/
+|   |-- 00_original_ca1_submission.ipynb
 |   |-- 01_data_understanding.ipynb
 |   |-- 02_feature_engineering_and_statistics.ipynb
 |   |-- 03_training_and_thresholding.ipynb
 |   |-- 04_evaluation_and_prediction.ipynb
-|   `-- archive/
 |-- reports/
 |   |-- figures/
 |   |-- metrics/
@@ -127,6 +127,8 @@ CI runs the same checks on Python 3.10, 3.11, and 3.12.
 ## Documentation
 
 - [Academic context](docs/ACADEMIC_CONTEXT.md)
+- [Assessment report](docs/ASSESSMENT_REPORT.md)
+- [Documentation index](docs/DOCUMENTATION_INDEX.md)
 - [Project structure](docs/PROJECT_STRUCTURE.md)
 - [Notebook guide](docs/NOTEBOOKS.md)
 - [Data card](docs/DATA_CARD.md)

@@ -2,7 +2,9 @@
 
 ## 0.1.0
 
-- Split the monolithic notebook into focused workflow notebooks and archived the original assessment notebook.
+- Promoted the original CA1 notebook to a maintained first-class notebook artifact.
+- Added report-style assessment documentation and documentation integrity checks.
+- Split the monolithic notebook into focused workflow notebooks while keeping the original assessment notebook maintained.
 - Added formal Singapore Polytechnic academic project context.
 - Renamed the project presentation to Predictive Maintenance Fault Classifier.
 - Reorganized raw data, notebooks, reports, models, source code, tests, and docs.

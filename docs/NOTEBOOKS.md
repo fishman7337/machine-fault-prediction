@@ -1,8 +1,16 @@
 # Notebook Guide
 
-The original project notebook was large and difficult to review as a single artifact. The notebook workflow is now split into smaller notebooks that each have one purpose and import the tested production package.
+The project now keeps both the maintained original CA1 notebook and a split production-facing notebook workflow. This protects the academic submission narrative while making the improved project easier to review, run, and maintain.
 
-## Notebook Order
+## Maintained Original
+
+| Notebook | Purpose |
+| --- | --- |
+| `notebooks/00_original_ca1_submission.ipynb` | Original CA1 assessment notebook maintained for academic traceability and narrative continuity. |
+
+The original notebook is intentionally not forced to be output-free because it represents the assessment artifact. Avoid rewriting its narrative unless the goal is to correct a clear factual or technical issue.
+
+## Modular Notebook Order
 
 | Notebook | Purpose |
 | --- | --- |
@@ -11,16 +19,6 @@ The original project notebook was large and difficult to review as a single arti
 | `notebooks/03_training_and_thresholding.ipynb` | Train a fast model sample and inspect validation metrics plus threshold selection. |
 | `notebooks/04_evaluation_and_prediction.ipynb` | Score holdout rows and preview the model output contract. |
 
-## Archive
-
-The original assessment notebook is retained at:
-
-```text
-notebooks/archive/original_factory_machine_status_classification.ipynb
-```
-
-It is preserved for academic traceability. New development should happen in the split notebooks or, preferably, in `src/fault_prediction/` with notebook cells importing reusable package functions.
-
 ## Quality Rules
 
 - Keep split notebooks output-free before committing.
@@ -28,6 +26,7 @@ It is preserved for academic traceability. New development should happen in the 
 - Keep generated model artifacts out of Git.
 - Add reusable logic to `src/fault_prediction/`, not directly inside notebooks.
 - Use the notebooks as readable workflow demonstrations, not as the source of production behavior.
+- Keep the original notebook available as `00_original_ca1_submission.ipynb`.
 
 ## Recommended Flow
 
