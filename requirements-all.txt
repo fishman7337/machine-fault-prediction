@@ -1,1 +1,5 @@
--e .[dev,notebook,security]
+# Full local development environment.
+
+-r requirements-dev.txt
+-r requirements-notebook.txt
+-r requirements-security.txt

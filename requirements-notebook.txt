@@ -1,1 +1,8 @@
--e .[notebook]
+# Notebook dependencies for exploratory analysis and report-style notebooks.
+
+-r requirements.txt
+
+ipykernel>=6.0
+matplotlib>=3.8
+plotly>=5.0
+seaborn>=0.13

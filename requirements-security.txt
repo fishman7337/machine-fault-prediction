@@ -1,1 +1,6 @@
--e .[security]
+# Security tooling for static analysis and dependency vulnerability auditing.
+
+-r requirements.txt
+
+bandit[toml]>=1.7.10
+pip-audit>=2.7

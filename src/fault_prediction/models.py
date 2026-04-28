@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -282,7 +282,7 @@ def train_model(
     metrics["validation_rows"] = float(len(y_test))
 
     metadata = {
-        "trained_at_utc": datetime.now(UTC).isoformat(),
+        "trained_at_utc": datetime.now(timezone.utc).isoformat(),
         "package_version": __version__,
         "profile": profile,
         "random_state": random_state,
