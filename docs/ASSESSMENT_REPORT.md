@@ -136,7 +136,7 @@ The improved workflow is split into:
 - `notebooks/03_training_and_thresholding.ipynb`
 - `notebooks/04_evaluation_and_prediction.ipynb`
 
-The original notebook preserves the academic report style. The split notebooks provide a cleaner workflow for review, maintenance, and future improvement.
+The original notebook preserves the academic report style. The split notebooks now also use the same style of markdown documentation, including academic context, numbered sections, explanatory paragraphs, and interpretation notes after code cells. This keeps the broken down notebooks consistent with the original submission while making the workflow easier to review, maintain, and improve.
 
 ## MLOps Improvements
 

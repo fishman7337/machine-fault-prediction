@@ -22,6 +22,7 @@ The original notebook is intentionally not forced to be output-free because it r
 ## Quality Rules
 
 - Keep split notebooks output-free before committing.
+- Keep split notebooks written in the same report-style markdown as the original notebook, including title context, numbered sections, explanations, and interpretation paragraphs.
 - Keep long-running model training in the CLI unless a notebook is explicitly for experimentation.
 - Keep generated model artifacts out of Git.
 - Add reusable logic to `src/fault_prediction/`, not directly inside notebooks.
