@@ -55,6 +55,14 @@ def _maybe_sample(df: pd.DataFrame, sample_size: int | None, random_state: int) 
 
 
 def train_command(args: argparse.Namespace) -> int:
+    """Train and persist a fault classifier from parsed CLI arguments.
+
+    Args:
+        args: Training paths, profile, split, threshold, and parallelism options.
+
+    Returns:
+        Zero after the model, metrics, and threshold search are saved.
+    """
     df = load_factory_data(args.data)
     df = _maybe_sample(df, args.sample_size, args.random_state)
     result = train_model(
@@ -88,6 +96,14 @@ def train_command(args: argparse.Namespace) -> int:
 
 
 def stats_command(args: argparse.Namespace) -> int:
+    """Run statistical feature tests and persist the result table.
+
+    Args:
+        args: Dataset, significance threshold, output, and preview options.
+
+    Returns:
+        Zero after the statistical report is written.
+    """
     df = load_factory_data(args.data)
     results = run_statistical_tests(df, alpha=args.alpha)
     output_path = Path(args.output)
@@ -99,6 +115,14 @@ def stats_command(args: argparse.Namespace) -> int:
 
 
 def predict_command(args: argparse.Namespace) -> int:
+    """Score input rows with a persisted model and decision threshold.
+
+    Args:
+        args: Model, input data, and prediction output paths.
+
+    Returns:
+        Zero after predictions are written.
+    """
     artifact = load_artifact(args.model)
     model = artifact["model"]
     threshold = float(artifact.get("threshold", 0.5))
@@ -128,6 +152,11 @@ def predict_command(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """Build the machine-fault workflow argument parser.
+
+    Returns:
+        Parser with train, statistics, and prediction subcommands.
+    """
     parser = argparse.ArgumentParser(
         prog="fault-predict",
         description="Train and operate the machine fault prediction workflow.",
@@ -168,6 +197,14 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Parse arguments and dispatch the requested workflow.
+
+    Args:
+        argv: Optional argument list. Uses process arguments when omitted.
+
+    Returns:
+        Exit code returned by the selected subcommand.
+    """
     parser = build_parser()
     args = parser.parse_args(argv)
     return args.func(args)

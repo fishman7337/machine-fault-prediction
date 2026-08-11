@@ -30,7 +30,6 @@ def engineer_features(
     features are removed afterwards to avoid feeding redundant representations into
     the estimator.
     """
-
     if not isinstance(data, pd.DataFrame):
         raise TypeError("Feature engineering expects a pandas DataFrame")
 
@@ -67,14 +66,37 @@ class FeatureEngineer(BaseEstimator, TransformerMixin):
         drop_source_features: bool = True,
         drop_identifier_columns: bool = True,
     ) -> None:
+        """Configure source and identifier column removal.
+
+        Args:
+            drop_source_features: Remove sensor columns replaced by engineered features.
+            drop_identifier_columns: Remove non-predictive product identifiers.
+        """
         self.drop_source_features = drop_source_features
         self.drop_identifier_columns = drop_identifier_columns
 
     def fit(self, X: pd.DataFrame, y: pd.Series | None = None) -> FeatureEngineer:
+        """Validate the feature schema without learning state.
+
+        Args:
+            X: Machine sensor features.
+            y: Optional targets accepted for scikit-learn compatibility.
+
+        Returns:
+            This fitted transformer instance.
+        """
         validate_schema(X, require_target=False)
         return self
 
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
+        """Apply deterministic machine-sensor feature engineering.
+
+        Args:
+            X: Raw machine sensor features.
+
+        Returns:
+            Engineered predictors with configured columns removed.
+        """
         return engineer_features(
             X,
             drop_source_features=self.drop_source_features,
