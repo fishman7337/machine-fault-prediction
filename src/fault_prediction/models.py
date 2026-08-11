@@ -246,32 +246,47 @@ def train_model(
     threshold_metric: str = "f1",
     n_jobs: int = -1,
 ) -> TrainResult:
-    """Train and evaluate the fault classifier on a stratified holdout split."""
+    """Train with disjoint stratified threshold-validation and test splits."""
     validate_schema(df, require_target=True)
+    if not 0.0 < test_size < 0.5:
+        raise ValueError("test_size must be greater than 0 and smaller than 0.5")
+
     X, y = split_features_target(df)
     stratify = y if y.nunique() > 1 else None
-    X_train, X_test, y_train, y_test = train_test_split(
+    X_remaining, X_test, y_remaining, y_test = train_test_split(
         X,
         y,
         test_size=test_size,
         random_state=random_state,
         stratify=stratify,
     )
+    validation_fraction = test_size / (1.0 - test_size)
+    remaining_stratify = y_remaining if y_remaining.nunique() > 1 else None
+    X_train, X_validation, y_train, y_validation = train_test_split(
+        X_remaining,
+        y_remaining,
+        test_size=validation_fraction,
+        random_state=random_state,
+        stratify=remaining_stratify,
+    )
 
     model = build_model(profile=profile, random_state=random_state, n_jobs=n_jobs)
     model.fit(X_train, y_train)
 
-    y_score = predict_scores(model, X_test)
+    validation_score = predict_scores(model, X_validation)
     threshold, threshold_curve = find_best_threshold(
-        y_test,
-        y_score,
+        y_validation,
+        validation_score,
         metric=threshold_metric,
     )
-    y_pred = (y_score >= threshold).astype(int)
-    metrics = evaluate_predictions(y_test, y_pred, y_score)
+    test_score = predict_scores(model, X_test)
+    y_pred = (test_score >= threshold).astype(int)
+    metrics = evaluate_predictions(y_test, y_pred, test_score)
     metrics["threshold"] = threshold
     metrics["test_size"] = float(test_size)
-    metrics["validation_rows"] = float(len(y_test))
+    metrics["training_rows"] = float(len(y_train))
+    metrics["threshold_validation_rows"] = float(len(y_validation))
+    metrics["test_rows"] = float(len(y_test))
 
     metadata = {
         "trained_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -279,6 +294,7 @@ def train_model(
         "profile": profile,
         "random_state": random_state,
         "threshold_metric": threshold_metric,
+        "split_policy": "disjoint_train_threshold_validation_test",
         "dropped_after_feature_engineering": list(SOURCE_COLUMNS_DROPPED_AFTER_ENGINEERING),
         "feature_names": get_feature_names(model),
         "metrics": metrics,
