@@ -38,7 +38,9 @@ The prediction workflow returns:
 - `predicted_probability_fault`
 - `predicted_machine_status`
 
-The classification threshold is selected during validation and saved with the model artifact.
+The classification threshold is selected on a dedicated validation split, then reported metrics
+are calculated once on a separate test split. The selected threshold is saved with the model
+artifact.
 
 ## Evaluation
 
@@ -60,7 +62,7 @@ Because faults are rare, balanced accuracy, recall, F1, and average precision sh
 - The dataset is imbalanced.
 - Missing values are imputed rather than recovered from source systems.
 - The model does not include temporal sequence behavior.
-- The included threshold is optimized on a holdout split and should be reviewed against business costs of false negatives and false positives.
+- The included threshold is optimized on a dedicated validation split and should be reviewed against business costs of false negatives and false positives.
 
 ## Monitoring Recommendations
 

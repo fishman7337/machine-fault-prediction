@@ -25,7 +25,6 @@ def numeric_feature_tests(
     alpha: float = 0.05,
 ) -> pd.DataFrame:
     """Run Welch t-tests and Mann-Whitney U tests for numeric features by target."""
-
     validate_schema(df, require_target=True)
     engineered = engineer_features(
         df,
@@ -77,7 +76,6 @@ def categorical_feature_tests(
     alpha: float = 0.05,
 ) -> pd.DataFrame:
     """Run chi-square tests for categorical features by target."""
-
     validate_schema(df, require_target=True)
     rows: list[dict[str, object]] = []
     for column in [QUALITY_COLUMN]:
@@ -109,7 +107,6 @@ def categorical_feature_tests(
 
 def run_statistical_tests(df: pd.DataFrame, *, alpha: float = 0.05) -> pd.DataFrame:
     """Run all configured p-value tests and sort by p-value."""
-
     results = pd.concat(
         [
             numeric_feature_tests(df, alpha=alpha),

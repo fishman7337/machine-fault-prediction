@@ -51,7 +51,13 @@ target-version = "py310"
 extend-exclude = ["notebooks/**/*.ipynb"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP"]
+select = ["E", "F", "I", "B", "UP", "D"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.bandit]
 exclude_dirs = [".git", ".venv", "build", "dist", "notebooks", "tests"]

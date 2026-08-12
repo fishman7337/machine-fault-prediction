@@ -2,6 +2,15 @@
 
 A reproducible machine learning project for predicting factory machine fault status from sensor readings. The original notebook analysis has been preserved, and the production workflow has been extracted into a tested Python package with CLI commands, CI, statistical tests, and MLOps documentation.
 
+## Evidence and interpretation
+
+| Evidence-backed measure | Current repository evidence |
+| --- | --- |
+| Canonical dataset | **20,000 factory observations** are versioned in the raw CSV. |
+| Current voting ensemble | **6 models**: Decision Tree, Random Forest, Gradient Boosting, AdaBoost, KNN, and Logistic Regression. |
+
+The qualitative outcome is an end-to-end, imbalance-aware fault-prediction workflow with feature engineering, statistical tests, threshold selection, and artifact persistence. Model count refers to the current reusable package; no industrial reliability or accuracy uplift is claimed without a pinned evaluation run.
+
 ## Academic Context
 
 This project was completed for Singapore Polytechnic, School of Computing, Diploma in Applied AI & Analytics, under the AI & Machine Learning module (`ST1511`), CA1 Part A.

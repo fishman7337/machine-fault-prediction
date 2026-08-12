@@ -18,7 +18,6 @@ def load_factory_data(path: str | Path = DEFAULT_DATA_PATH) -> pd.DataFrame:
     The original project stored CSV content with an ``.xls`` extension. This loader
     accepts either the corrected CSV path or an older spreadsheet-looking path.
     """
-
     data_path = Path(path)
     if not data_path.exists():
         raise FileNotFoundError(f"Dataset not found: {data_path}")
@@ -34,7 +33,6 @@ def load_factory_data(path: str | Path = DEFAULT_DATA_PATH) -> pd.DataFrame:
 
 def validate_schema(df: pd.DataFrame, *, require_target: bool = True) -> pd.DataFrame:
     """Validate that a dataframe contains the columns required by the pipeline."""
-
     required = REQUIRED_TRAINING_COLUMNS if require_target else REQUIRED_INPUT_COLUMNS
     missing = [column for column in required if column not in df.columns]
     if missing:
@@ -51,14 +49,12 @@ def validate_schema(df: pd.DataFrame, *, require_target: bool = True) -> pd.Data
 
 def split_features_target(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
     """Split a validated dataframe into raw features and target."""
-
     validate_schema(df, require_target=True)
     return df.drop(columns=[TARGET_COLUMN]), df[TARGET_COLUMN].astype(int)
 
 
 def target_distribution(df: pd.DataFrame) -> pd.DataFrame:
     """Return target counts and percentages for monitoring class imbalance."""
-
     validate_schema(df, require_target=True)
     counts = df[TARGET_COLUMN].value_counts().sort_index()
     distribution = counts.rename("count").to_frame()
